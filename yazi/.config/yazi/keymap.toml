@@ -1,0 +1,39 @@
+# Copy yanked files to the system clipboard
+[[mgr.prepend_keymap]]
+on  = "y"
+run = [ "yank", 'plugin clipboard -- --action=copy' ]
+
+# Paste files from the system clipboard into the current directory
+[[mgr.prepend_keymap]]
+on  = "<C-p>"
+run = [ 'plugin clipboard -- --action=paste' ]
+
+[[mgr.prepend_keymap]]
+on  = "R"
+run = "shell '\"$@\"'"
+desc = "Run file"
+
+[[mgr.prepend_keymap]]
+on = "l"
+run = "plugin augment-command.enter"
+desc = "Enter directory (skip single-child directories)"
+
+[[mgr.prepend_keymap]]
+on = "h"
+run = "plugin augment-command.leave"
+desc = "Leave directory (skip single-child parents)"
+
+[[mgr.prepend_keymap]]
+on = "L"
+run = "plugin augment-command.enter -- --no-skip"
+desc = "Enter directory without skipping"
+
+[[mgr.prepend_keymap]]
+on = "H"
+run = "plugin augment-command.leave -- --no-skip"
+desc = "Leave directory without skipping"
+
+[[mgr.prepend_keymap]]
+on = "<C-x>"
+run = "shell 'chmod +x -- %s && %s' --block"
+desc = "Execute selected file"

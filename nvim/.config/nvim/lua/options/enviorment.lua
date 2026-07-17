@@ -1,0 +1,1 @@
+vim.env.PAGER = "less"

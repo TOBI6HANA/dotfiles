@@ -1,0 +1,149 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 40,
+    "margin-top": 10,
+    "margin-left": 20,
+    "margin-right": 20,
+    "margin-bottom": -10,
+
+    "modules-left": ["custom/update-tracker", "custom/window", "group/traygroup"],
+    "modules-center": ["clock", "hyprland/workspaces", "wireplumber", "battery", "network"],
+    "modules-right": ["group/media", "custom/power"],
+    "hyprland/mode": {
+        "format": " {}"
+    },
+    "hyprland/workspaces": {
+        "fixed-center": true,
+        "persistent-workspaces": {
+            "eDP-1": [1, 2, 3, 4, 5],
+            "HDMI-A-1": [1, 2, 3, 4, 5, 6, 7, 8, 9]
+        },
+        "disable-scroll": true,
+        "all-outputs": true,
+        "disable-markup": false,
+        "format": "{icon}",
+        "format-icons": {
+            "1": "1",
+            "2": "2",
+            "3": "3",
+            "4": "4",
+            "5": "5",
+            "6": "6",
+            "7": "7",
+            "8": "8",
+            "9": "9"
+        }
+    },
+    "clock": {
+        "format": "󰥔 {:%H:%M}",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+            "format": {
+                "today": "<span color='#75f1fa'><b>{}</b></span>"
+            }
+        }
+    },
+    "custom/power": {
+        "format": "<span font='15' rise='-3000'> ⏻ </span>",
+        "on-click": "wlogout",
+        "tooltip": false
+    },
+    "group/traygroup": {
+        "orientation": "horizontal",
+        "modules": ["tray"]
+    },
+    "tray": {
+        "icon-size": 20,
+        "spacing": 8
+    },
+    "custom/window": {
+        "exec": "~/.config/waybar/modules/window-title.sh",
+        "escape": true
+    },
+    "custom/recorder": {
+        "format": "!",
+        "return-type": "json",
+        "interval": 3,
+        "exec": "echo '{\"class\": \"recording\"}'",
+        "exec-if": "pgrep wf-recorder",
+        "tooltip": false,
+        "on-click": "killall -s SIGINT wf-recorder"
+    },
+    "battery": {
+        "format-icons": {
+            "default": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂"],
+            "charging": ["󰢟", "󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋"]
+        },
+        "format-charging": "{capacity}% {icon}",
+        "format-full": "{capacity}% 󰁹",
+        "format": "{capacity}% {icon}",
+        "interval": 15,
+        "states": {
+            "warning": 25,
+            "critical": 10
+        },
+        "tooltip": true,
+        "tooltip-format": "{time}",
+        "tooltip-format-full": "Fully charged",
+        "tooltip-format-charging": "{capacity}% (Charging)"
+    },
+    "network": {
+        "format": "{icon}",
+        "format-wifi": "\uf1eb",
+        "format-ethernet": " {ifname}",
+        "format-disconnected": "⚠ Disconnected",
+
+        "tooltip-format-wifi": "{essid} ({signalStrength}%)\n{ipaddr}/{cidr}",
+        "tooltip-format-ethernet": "{ifname}",
+        "tooltip-format-disconnected": "Disconnected"
+    },
+    "wireplumber": {
+        "format": "{icon}",
+        "format-muted": "<span font='20' rise='-2000'></span>",
+        "tooltip-format": "{volume}%",
+        "tooltip": true,
+        "scroll-step": 5,
+        "on-click": "pavucontrol",
+        "format-icons": [
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    "group/media": {
+        "orientation": "horizontal",
+        "modules": [
+            "custom/media-animation",
+            "custom/media-now-playing",
+            "custom/media-time"
+        ]
+    },
+    "custom/media-now-playing": {
+        "exec": "~/.config/waybar/modules/media/media-now-playing.sh",
+        "escape": true,
+        "tooltip": false,
+        "on-click": "playerctl play-pause",
+        "on-click-middle": "playerctl previous",
+        "on-click-right": "playerctl next"
+    },
+    "custom/media-animation": {
+        "exec": "~/.config/waybar/modules/media/media-animation.sh",
+        "tooltip": false
+    },
+    "custom/media-time": {
+        "exec": "~/.config/waybar/modules/media/media-time.sh",
+        "escape": true,
+        "tooltip": false
+    },
+    "custom/update-tracker": {
+        "format": "{}",
+        "escape": true,
+        "return-type": "json",
+        "exec": "~/.config/waybar/modules/update-tracker.sh",
+        "restart-interval": 60,
+        "signal": 8,
+        "on-click": "hyprctl dispatch 'hl.dsp.exec_cmd(\"kitty -e bash ~/.local/bin/install-updates.sh\", { float = true })'"
+    }
+}

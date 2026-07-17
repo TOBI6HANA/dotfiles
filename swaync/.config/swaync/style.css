@@ -1,0 +1,158 @@
+@define-color bg        rgba(26, 27, 38, 0.72);
+@define-color bg2       rgba(36, 40, 59, 0.55);
+@define-color fg        #c0caf5;
+
+@define-color blue      #7aa2f7;
+@define-color cyan      #7dcfff;
+@define-color purple    #bb9af7;
+@define-color magenta   #c678dd;
+@define-color red       #f7768e;
+@define-color green     #9ece6a;
+@define-color yellow    #e0af68;
+
+@define-color border    rgba(122, 162, 247, 0.35);
+
+* {
+  font-family: "JetBrainsMonoNL Nerd Font Mono";
+  font-size: 13px;
+}
+
+*:focus {
+  outline: none !important;
+  border: none !important;
+}
+
+/* =========================
+   Notification center base
+========================= */
+
+.notification-row {
+  background: @bg;
+  border-radius: 14px;
+  margin: 6px 10px;
+  padding: 10px;
+  border: 1px solid @border;
+  backdrop-filter: blur(18px);
+}
+
+.notification-row:hover {
+  background: @bg2;
+  border-color: @cyan;
+}
+
+/* =========================
+   Header / control center
+========================= */
+
+.control-center {
+  background: @bg;
+  border-radius: 18px;
+  border: 1px solid @border;
+  backdrop-filter: blur(22px);
+  padding: 14px;
+}
+
+/* Top bar inside SwayNC */
+.control-center .widget-title {
+  color: @cyan;
+}
+
+/* =========================
+   Buttons (quick toggles)
+========================= */
+
+.widget-buttons-grid {
+  margin-top: 10px;
+}
+
+.widget-buttons-grid button {
+  background: rgba(36, 40, 59, 0.4);
+  border-radius: 12px;
+  border: 1px solid transparent;
+  color: @fg;
+  padding: 10px;
+  margin: 4px;
+  transition: 0.2s ease;
+}
+
+.widget-buttons-grid button:hover {
+  border: 1px solid @blue;
+  background: rgba(122, 162, 247, 0.15);
+}
+
+/* =========================
+   Notification content
+========================= */
+
+.notification-content {
+  color: @fg;
+}
+
+.summary {
+  color: @cyan;
+  font-weight: 600;
+}
+
+.time {
+  color: rgba(192, 202, 245, 0.6);
+  font-size: 11px;
+}
+
+/* App icon styling */
+.app-icon {
+  border-radius: 0;
+  margin-right: 8px;
+}
+
+.image {
+  border-radius: 0;
+}
+
+/* =========================
+   Close / action buttons
+========================= */
+
+.close-button {
+  background: transparent;
+  color: @red;
+  border-radius: 8px;
+}
+
+.close-button:hover {
+  background: rgba(247, 118, 142, 0.15);
+}
+
+/* Action buttons */
+.notification-action {
+  background: rgba(122, 162, 247, 0.15);
+  border-radius: 10px;
+  border: 1px solid transparent;
+  color: @fg;
+}
+
+.notification-action:hover {
+  border: 1px solid @cyan;
+}
+
+.notification-group {
+  /* Styling only for Grouped Notifications */
+  transition: opacity 200ms ease-in-out;
+  /* The groups close button */
+}
+
+.notification-group:focus {
+  background: transparent;
+}
+
+/* =========================
+   Scrollbar (clean minimal)
+========================= */
+
+scrollbar {
+  background: transparent;
+}
+
+scrollbar slider {
+  background: rgba(122, 162, 247, 0.35);
+  border-radius: 10px;
+}

@@ -1,0 +1,26 @@
+window#osd {
+    background-color: rgba(26, 27, 38, 0.75);
+    border: 2px solid rgba(122, 162, 247, 0.4);
+    border-radius: 18px;
+    padding: 14px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+label {
+    color: #c0caf5;
+}
+
+progressbar > trough {
+    background-color: rgba(41, 46, 66, 0.6);
+    border-radius: 8px;
+    min-height: 10px;
+}
+
+progressbar > trough > progress {
+    background-color: #7aa2f7;
+    border-radius: 8px;
+}
+
+image {
+    color: #7aa2f7;
+}

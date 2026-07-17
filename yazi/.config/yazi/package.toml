@@ -1,0 +1,14 @@
+[[plugin.deps]]
+use = "XYenon/clipboard"
+rev = "0ac0320"
+hash = "f80172438b4b5c31e94d6c891f734445"
+
+[[plugin.deps]]
+use = "hankertrix/augment-command"
+rev = "dd2d6cf"
+hash = "cba2bae0c4ad211f4219de550b3838a5"
+
+[[flavor.deps]]
+use = "BennyOe/tokyo-night"
+rev = "8e6296f"
+hash = "d9da921c3bd37ba32ee27a8a7a40461f"
