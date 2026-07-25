@@ -1,0 +1,7 @@
+[sie][Gate#0]
+attack=10
+curveThreshold=-40
+curveZone=-6.03
+outputGain=10
+reduction=-50
+release=250
