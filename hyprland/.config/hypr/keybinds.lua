@@ -125,3 +125,7 @@ hl.bind(mainMod .. " + n", hl.dsp.exec_cmd("swaync-client -t"))
 
 -- Waybar
 hl.bind(mainMod .. " + SHIFT + b", hl.dsp.exec_cmd("~/.config/waybar/launch.sh"))
+
+-- OBS
+hl.bind("SUPER + F9", hl.dsp.exec_cmd("~/.local/bin/obs-toggle-record.py"))
+hl.bind("SUPER + F10", hl.dsp.exec_cmd("~/.local/bin/obs-save-replay.py"))

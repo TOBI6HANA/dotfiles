@@ -7,7 +7,7 @@
     "margin-right": 20,
     "margin-bottom": -10,
 
-    "modules-left": ["custom/update-tracker", "custom/window", "group/traygroup"],
+    "modules-left": ["custom/update-tracker", "group/traygroup", "custom/window"],
     "modules-center": ["clock", "hyprland/workspaces", "wireplumber", "battery", "network"],
     "modules-right": ["group/media", "custom/power"],
     "hyprland/mode": {

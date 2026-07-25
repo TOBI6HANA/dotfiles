@@ -49,6 +49,22 @@ hl.window_rule({
 	fullscreen = true,
 })
 
+hl.window_rule({
+	match = {
+		class = "^(mpv|com.interversehq.qView)$",
+	},
+	float = true,
+	center = true,
+	size = "1280 720",
+})
+
+hl.window_rule({
+	match = {
+		class = "mpv",
+	},
+	size = "1600 900",
+})
+
 hl.layer_rule({
 	match = { class = "Vesktop" },
 	blur = true,
