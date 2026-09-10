@@ -3,8 +3,8 @@
 # start daemon first
 DAEMON_PID=$!
 
-WALLPAPER_DIR="$HOME/Pictures/wallpapers"
-INTERVAL=300
+WALLPAPER_DIR="$HOME/Pictures/Wallpapers"
+INTERVAL=600
 
 while true; do
     WALL=$(find "$WALLPAPER_DIR" -type f \( -name "*.jpg" -o -name "*.png" \) | shuf -n 1)

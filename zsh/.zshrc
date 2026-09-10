@@ -15,6 +15,9 @@ export PATH="$HOME/.local/bin:$PATH"
 # ALIASES
 ############################
 alias vim="nvim"
+alias nano="nvim"
+alias yay="paru"
+alias more="less"
 
 ############################
 # OPTIONS
@@ -84,7 +87,6 @@ export FZF_DEFAULT_OPTS="
 # universal preview as fzf-tab.
 export FZF_CTRL_T_OPTS="--preview '$HOME/.local/bin/fzf-preview.sh {}' --preview-window=right,55%,border-rounded"
 export FZF_ALT_C_OPTS="--preview '$HOME/.local/bin/fzf-preview.sh {}' --preview-window=right,55%,border-rounded"
-export BAT_THEME="tokyonight_night"
 
 ############################
 # ZOXIDE
@@ -130,8 +132,13 @@ zinit light jeffreytse/zsh-vi-mode
 
 export RIPGREP_CONFIG_PATH="$HOME/.config/ripgrep/ripgreprc"
 export GTK_THEME=Tokyonight-Dark
-export PAGER=less
-export SYSTEMD_PAGER=less
+
+(./bat-into-tokyonight >/dev/null 2>&1 &)
+
+export PAGER=bat
+export SYSTEMD_PAGER=bat
+export MANPAGER=less
+export BAT_THEME="tokyonight_night"
 
 function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd

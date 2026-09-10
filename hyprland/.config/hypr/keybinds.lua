@@ -15,39 +15,41 @@ local menu = programs.menu
 hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + space", hl.dsp.exec_cmd(menu))
+hl.bind(mainMod .. " + C", hl.dsp.exec_cmd("zen-browser"))
 
 -- Window management
 hl.bind(mainMod .. " + Q", hl.dsp.window.close())
-hl.bind(mainMod .. " + M", hl.dsp.exit())
+hl.bind(mainMod .. " + CTRL + M", hl.dsp.exit())
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen())
 
 hl.bind(mainMod .. " + SHIFT + SPACE", hl.dsp.window.float({ action = "toggle" }))
-hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
+hl.bind(mainMod .. " + P", hl.dsp.window.pin({ action = "toggle" }))
+hl.bind(mainMod .. " + SHIFT + C", hl.dsp.window.center())
 
 -- Move focus
 hl.bind(mainMod .. " + H", function()
-	hl.dispatch(hl.dsp.focus({ direction = "l" }))
-	hl.dispatch(hl.dsp.window.alter_zorder({ mode = "top" }))
+    hl.dispatch(hl.dsp.focus({ direction = "l" }))
+    hl.dispatch(hl.dsp.window.alter_zorder({ mode = "top" }))
 end)
 
 hl.bind(mainMod .. " + J", function()
-	hl.dispatch(hl.dsp.focus({ direction = "d" }))
-	hl.dispatch(hl.dsp.window.alter_zorder({ mode = "top" }))
+    hl.dispatch(hl.dsp.focus({ direction = "d" }))
+    hl.dispatch(hl.dsp.window.alter_zorder({ mode = "top" }))
 end)
 
 hl.bind(mainMod .. " + K", function()
-	hl.dispatch(hl.dsp.focus({ direction = "u" }))
-	hl.dispatch(hl.dsp.window.alter_zorder({ mode = "top" }))
+    hl.dispatch(hl.dsp.focus({ direction = "u" }))
+    hl.dispatch(hl.dsp.window.alter_zorder({ mode = "top" }))
 end)
 
 hl.bind(mainMod .. " + L", function()
-	hl.dispatch(hl.dsp.focus({ direction = "r" }))
-	hl.dispatch(hl.dsp.window.alter_zorder({ mode = "top" }))
+    hl.dispatch(hl.dsp.focus({ direction = "r" }))
+    hl.dispatch(hl.dsp.window.alter_zorder({ mode = "top" }))
 end)
 
 hl.bind(mainMod .. " + Tab", function()
-	hl.dispatch(hl.dsp.window.cycle_next())
-	hl.dispatch(hl.dsp.window.alter_zorder({ mode = "top" }))
+    hl.dispatch(hl.dsp.window.cycle_next())
+    hl.dispatch(hl.dsp.window.alter_zorder({ mode = "top" }))
 end)
 
 -- Move windows
@@ -66,19 +68,19 @@ hl.bind(mainMod .. " + CTRL + J", hl.dsp.window.move({ x = 0, y = 30, relative =
 hl.bind(mainMod .. " + R", hl.dsp.submap("resize"))
 
 hl.define_submap("resize", function()
-	hl.bind("h", hl.dsp.window.resize({ x = -30, y = 0, relative = true }), { repeating = true })
-	hl.bind("l", hl.dsp.window.resize({ x = 30, y = 0, relative = true }), { repeating = true })
-	hl.bind("k", hl.dsp.window.resize({ x = 0, y = 30, relative = true }), { repeating = true })
-	hl.bind("j", hl.dsp.window.resize({ x = 0, y = -30, relative = true }), { repeating = true })
+    hl.bind("h", hl.dsp.window.resize({ x = -30, y = 0, relative = true }), { repeating = true })
+    hl.bind("l", hl.dsp.window.resize({ x = 30, y = 0, relative = true }), { repeating = true })
+    hl.bind("k", hl.dsp.window.resize({ x = 0, y = 30, relative = true }), { repeating = true })
+    hl.bind("j", hl.dsp.window.resize({ x = 0, y = -30, relative = true }), { repeating = true })
 
-	hl.bind("Escape", hl.dsp.submap("reset"))
+    hl.bind("Escape", hl.dsp.submap("reset"))
 end)
 
 -- Switch workspaces with mainMod + [1-5]
 -- Move active window to a workspace with mainMod + SHIFT + [1-5]
 for i = 1, 9 do
-	hl.bind(mainMod .. " + " .. i, hl.dsp.focus({ workspace = i }))
-	hl.bind(mainMod .. " + SHIFT + " .. i, hl.dsp.window.move({ workspace = i }))
+    hl.bind(mainMod .. " + " .. i, hl.dsp.focus({ workspace = i }))
+    hl.bind(mainMod .. " + SHIFT + " .. i, hl.dsp.window.move({ workspace = i }))
 end
 
 -- Move/resize windows with mainMod + LMB/RMB and dragging
@@ -90,14 +92,14 @@ hl.bind(mainMod .. " + SHIFT + R", hl.dsp.exec_cmd("hyprctl reload"))
 
 -- Multimedia keys for volume
 hl.bind(
-	"XF86AudioRaiseVolume",
-	hl.dsp.exec_cmd("swayosd-client --output-volume raise"),
-	{ locked = true, repeating = true }
+    "XF86AudioRaiseVolume",
+    hl.dsp.exec_cmd("swayosd-client --output-volume raise"),
+    { locked = true, repeating = true }
 )
 hl.bind(
-	"XF86AudioLowerVolume",
-	hl.dsp.exec_cmd("swayosd-client --output-volume lower"),
-	{ locked = true, repeating = true }
+    "XF86AudioLowerVolume",
+    hl.dsp.exec_cmd("swayosd-client --output-volume lower"),
+    { locked = true, repeating = true }
 )
 hl.bind("XF86AudioMute", hl.dsp.exec_cmd("swayosd-client --output-volume mute-toggle"), { locked = true })
 hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd("~/.config/swayosd/mic-mute-toggle.sh"))
@@ -129,3 +131,17 @@ hl.bind(mainMod .. " + SHIFT + b", hl.dsp.exec_cmd("~/.config/waybar/launch.sh")
 -- OBS
 hl.bind("SUPER + F9", hl.dsp.exec_cmd("~/.local/bin/obs-toggle-record.py"))
 hl.bind("SUPER + F10", hl.dsp.exec_cmd("~/.local/bin/obs-save-replay.py"))
+
+-- Screenshots
+hl.bind("Print", hl.dsp.exec_cmd("~/.local/bin/screenshot region"))
+hl.bind("SUPER + Print", hl.dsp.exec_cmd("~/.local/bin/screenshot window"))
+hl.bind("SUPER + SHIFT + Print", hl.dsp.exec_cmd("~/.local/bin/screenshot workspace"))
+
+hl.bind("CTRL + Print", hl.dsp.exec_cmd("~/.local/bin/screenshot region edit"))
+hl.bind("CTRL + SUPER + Print", hl.dsp.exec_cmd("~/.local/bin/screenshot window edit"))
+hl.bind("CTRL + SUPER + SHIFT + Print", hl.dsp.exec_cmd("~/.local/bin/screenshot workspace edit"))
+
+hl.bind("SUPER + SHIFT + S", hl.dsp.exec_cmd("hyprpicker -a"))
+
+-- Autoclicker
+hl.bind("ALT + F6", hl.dsp.exec_cmd("~/.local/bin/autoclicker"))

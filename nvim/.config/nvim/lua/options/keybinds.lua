@@ -19,5 +19,6 @@ vim.keymap.set("v", "<C-d>", "y'<P", { desc = "Duplicate selection" })
 vim.keymap.set("i", "jj", "<Esc>", { noremap = false })
 
 vim.keymap.set({ "n", "v" }, "<leader>y", '"+y')
+vim.keymap.set("x", "<leader>p", '"_dP', { desc = "Paste without overwriting register" })
 
 vim.api.nvim_create_user_command("W", ":w", {})

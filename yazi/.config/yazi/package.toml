@@ -1,12 +1,17 @@
 [[plugin.deps]]
-use = "XYenon/clipboard"
-rev = "0ac0320"
-hash = "f80172438b4b5c31e94d6c891f734445"
-
-[[plugin.deps]]
 use = "hankertrix/augment-command"
 rev = "dd2d6cf"
 hash = "cba2bae0c4ad211f4219de550b3838a5"
+
+[[plugin.deps]]
+use = "boydaihungst/fuse-archive"
+rev = "a5d65ef"
+hash = "7f27470a3a2621a44bbf5f437871f378"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:types"
+rev = "4dc7f1b"
+hash = "d368d5a6a72657e1c0e7ee7340dcea8c"
 
 [[flavor.deps]]
 use = "BennyOe/tokyo-night"

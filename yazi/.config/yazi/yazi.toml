@@ -6,7 +6,7 @@ sort_reverse 	 = false
 sort_dir_first = true
 sort_translit  = false
 sort_fallback  = "alphabetical"
-linemode       = "none"
+linemode       = "size"
 show_hidden    = true
 show_symlink   = true
 scrolloff      = 5
@@ -29,6 +29,9 @@ edit = [
 	{ run = "${EDITOR:-nvim} %s", desc = "$EDITOR",      for = "unix", block = true },
 	{ run = "code %s",          desc = "code",         for = "windows", orphan = true },
 	{ run = "code -w %s",       desc = "code (block)", for = "windows", block = true },
+]
+sudo_edit = [
+	{ run = 'sudoedit "%s1"', desc = "$EDITOR (sudo)", for = "unix", block = true },
 ]
 play = [
 	{ run = "xdg-open %s1",    desc = "Play", for = "linux", orphan = true },
@@ -65,16 +68,16 @@ sudo_exec = [
     { run = 'chmod +x -- "%s" && sudo "%s"', block = true, desc = "Execute (sudo)" },
 ]
 new_term_edit = [
-    { run = 'kitty --directory "%d1" nvim "%s1"', orphan = true, desc = "Edit in new terminal"}
+    { run = 'ghostty --working-directory="%d1" -e nvim "%s1"', orphan = true, desc = "Edit in new terminal"}
 ]
 new_term_sudo_edit = [
-    { run = 'kitty --directory "%d1" sudoedit "%s1"', orphan = true, desc = "Edit in new terminal (sudo)"}
+    { run = 'ghostty --working-directory="%d1" -e sudoedit "%s1"', orphan = true, desc = "Edit in new terminal (sudo)"}
 ]
 new_term_exec = [
-    { run = '''kitty --directory "%d1" -- sh -c 'chmod +x -- "$1" && "$1"' -- "%s1"''', orphan = true, desc = "Execute in new terminal" },
+    { run = '''ghostty --working-directory="%d1" -e sh -c 'chmod +x -- "$1" && "$1"' -- "%s1"''', orphan = true, desc = "Execute in new terminal" },
 ]
 new_term_sudo_exec = [
-    { run = '''kitty --directory "%d1" -- sh -c 'chmod +x -- "$1" && sudo "$1"' -- "%s1"''', orphan = true, desc = "Execute in new terminal (sudo)" },
+    { run = '''ghostty --working-directory="%d1" -e sh -c 'chmod +x -- "$1" && sudo "$1"' -- "%s1"''', orphan = true, desc = "Execute in new terminal (sudo)" },
 ]
 
 [open]
@@ -82,7 +85,7 @@ rules = [
 	# Folder
 	{ url = "*/", use = [ "edit", "open", "reveal" ] },
 	# Text
-	{ mime = "text/*", use = [ "edit", "reveal", "execute", "sudo_exec", "new_term_edit", "new_term_sudo_edit", "new_term_exec", "new_term_sudo_exec" ] },
+	{ mime = "text/*", use = [ "edit", "sudo_edit", "reveal", "execute", "sudo_exec", "new_term_edit", "new_term_sudo_edit", "new_term_exec", "new_term_sudo_exec" ] },
 	# Image
 	{ mime = "image/*", use = [ "open", "reveal" ] },
 	# Media

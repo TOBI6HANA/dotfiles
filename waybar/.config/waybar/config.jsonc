@@ -16,8 +16,7 @@
     "hyprland/workspaces": {
         "fixed-center": true,
         "persistent-workspaces": {
-            "eDP-1": [1, 2, 3, 4, 5],
-            "HDMI-A-1": [1, 2, 3, 4, 5, 6, 7, 8, 9]
+            "DP-1": [1, 2, 3, 4, 5, 6, 7, 8, 9]
         },
         "disable-scroll": true,
         "all-outputs": true,
@@ -91,8 +90,8 @@
     "network": {
         "format": "{icon}",
         "format-wifi": "\uf1eb",
-        "format-ethernet": " {ifname}",
-        "format-disconnected": "⚠ Disconnected",
+        "format-ethernet": "\uef44",
+        "format-disconnected": "\uf0ac",
 
         "tooltip-format-wifi": "{essid} ({signalStrength}%)\n{ipaddr}/{cidr}",
         "tooltip-format-ethernet": "{ifname}",
@@ -100,13 +99,12 @@
     },
     "wireplumber": {
         "format": "{icon}",
-        "format-muted": "<span font='20' rise='-2000'></span>",
+        "format-muted": "",
         "tooltip-format": "{volume}%",
         "tooltip": true,
         "scroll-step": 5,
         "on-click": "pavucontrol",
         "format-icons": [
-            "",
             "",
             "",
             ""
@@ -144,6 +142,6 @@
         "exec": "~/.config/waybar/modules/update-tracker.sh",
         "restart-interval": 60,
         "signal": 8,
-        "on-click": "hyprctl dispatch 'hl.dsp.exec_cmd(\"kitty -e bash ~/.local/bin/install-updates.sh\", { float = true })'"
+        "on-click": "hyprctl dispatch 'hl.dsp.exec_cmd(\"kitty -e bash ~/.local/bin/install-updates.sh\", { float = true, center = true, size = {\"monitor_w * 0.5\", \"monitor_h * 0.5\"} })'"
     }
 }

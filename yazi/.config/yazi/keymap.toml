@@ -1,39 +1,71 @@
-# Copy yanked files to the system clipboard
 [[mgr.prepend_keymap]]
-on  = "y"
-run = [ "yank", 'plugin clipboard -- --action=copy' ]
-
-# Paste files from the system clipboard into the current directory
-[[mgr.prepend_keymap]]
-on  = "<C-p>"
-run = [ 'plugin clipboard -- --action=paste' ]
+on = "<C-y>"
+run = "plugin sys-copy"
+desc = "Copy path(s) to system clipboard"
 
 [[mgr.prepend_keymap]]
-on  = "R"
+on = "<C-p>"
+run = "plugin sys-paste"
+desc = "Paste system clipboard as new file"
+
+# Run file
+[[mgr.prepend_keymap]]
+on = "R"
 run = "shell '\"$@\"'"
 desc = "Run file"
 
-[[mgr.prepend_keymap]]
-on = "l"
-run = "plugin augment-command.enter"
-desc = "Enter directory (skip single-child directories)"
-
-[[mgr.prepend_keymap]]
-on = "h"
-run = "plugin augment-command.leave"
-desc = "Leave directory (skip single-child parents)"
-
+# Enter directory without skipping
 [[mgr.prepend_keymap]]
 on = "L"
 run = "plugin augment-command.enter -- --no-skip"
 desc = "Enter directory without skipping"
 
+# Leave directory without skipping
 [[mgr.prepend_keymap]]
 on = "H"
 run = "plugin augment-command.leave -- --no-skip"
 desc = "Leave directory without skipping"
 
+# Make selected file executable
 [[mgr.prepend_keymap]]
 on = "<C-x>"
 run = "shell 'chmod +x -- %s && %s' --block"
 desc = "Execute selected file"
+
+# Sudo edit
+[[mgr.prepend_keymap]]
+on = "<A-Enter>"
+run = 'shell --block -- sudoedit "$1"'
+desc = "Sudo edit"
+
+# FUSE archive plugin
+[[mgr.prepend_keymap]]
+on = "<Right>"
+run = "plugin fuse-archive -- mount"
+desc = "Enter or Mount selected archive"
+
+[[mgr.prepend_keymap]]
+on = "<Left>"
+run = "plugin fuse-archive -- leave"
+desc = "Leave selected archive without unmount it"
+
+[[mgr.prepend_keymap]]
+on = "l"
+run = "plugin fuse-archive -- mount"
+desc = "Enter or Mount selected archive"
+
+[[mgr.prepend_keymap]]
+on = "h"
+run = "plugin fuse-archive -- leave"
+desc = "Leave selected archive without unmount it"
+
+# Quit with archive unmount
+[[mgr.prepend_keymap]]
+on = "q"
+run = ["plugin fuse-archive -- unmount", "quit"]
+desc = "Quit the process"
+
+[[mgr.prepend_keymap]]
+on = "Q"
+run = ["plugin fuse-archive -- unmount", "quit --no-cwd-file"]
+desc = "Quit without outputting cwd-file"

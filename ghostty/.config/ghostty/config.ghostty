@@ -1,0 +1,5 @@
+theme = TokyoNight Night
+background-opacity = 0.9
+confirm-close-surface = false
+font-family = "Maple Mono NF Medium"
+font-feature = -cv01
